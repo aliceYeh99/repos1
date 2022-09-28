@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="chart" style="width:800px; height: 600px;"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.0.2/echarts.common.min.js"></script>
+    <script>
+        var data =[
+                  116, 210, 130, 60, 300, 20, 5
+        ];
+        var options = {
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+                
+            },
+            series: [{
+                data: data,
+                type: 'bar'			//圖表類型
+            }],
+            toolbox: {
+                left: 'center',
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none',
+                        title: {
+                            back: "還原",
+                            zoom:"縮放"
+                        }
+                    },
+                    restore: {title:"還原"},
+                    saveAsImage: {title:"匯出"}
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            dataZoom: [{
+                startValue: 'Mon'
+            },]
+        };
+        var myChart = echarts.init(document.getElementById('chart'));
+        myChart.setOption(options);
+
+    </script>
+</body>
+</html>

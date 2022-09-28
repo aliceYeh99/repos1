@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+        context.beginPath();                      //開始繪製路徑
+        context.moveTo(100,50);                   //移動到某座標點
+        context.lineTo(50,100);                   //繪製線條至指定的座標點
+        context.lineTo(150,100);				  //繪製線條至指定的座標點
+        context.lineTo(100,50);		              //繪製線條至指定的座標點
+        context.strokeStyle = "#ff0000";          //設定邊框樣式
+        context.lineWidth = 10;         	      //設定線條寬度
+        context.lineCap = "round";                //設定端點樣式 
+        context.lineJoin= "round";     	          //設定連接點
+        context.fillStyle = "#0000ff";            //設定填滿封閉區間樣式
+        context.fill();                           //填滿封閉區間
+        context.stroke();                         //繪製邊框
+        context.closePath();                      //結束繪製路徑
+
+        context.fillStyle = "#FF0000";
+        context.strokeStyle = '#0000ff';
+        context.fillRect(200,200,150,50);
+        context.strokeRect(200,260,150,50);
+        context.clearRect(30,25,90,60); 
+
+        var centerX = 350;
+        var centerY = 300;
+        var radius = 75;
+        var startingAngle = 1 * Math.PI;
+        var endingAngle = 0 * Math.PI;
+        var counterclockwise = false;
+        context.arc(centerX, centerY, radius, startingAngle,endingAngle, counterclockwise);
+        context.lineWidth = 15;
+        context.strokeStyle = "black"; 
+        context.stroke();
+
+        var imageObj = new Image();
+        imageObj.onload = function(){
+            var sourceX = 400;
+            var sourceY = 400;
+            var sourceWidth = 300;
+            var sourceHeight = 300;
+            var destWidth = sourceWidth;
+            var destHeight = sourceHeight;
+            var destX = 100;
+            var destY = 100;
+            context.drawImage(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+        };
+        imageObj.src = "images/dog.jpg"; 
+
+        var x = 500;
+        var y = 500;
+        context.font = "30pt Calibri";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillStyle = "#0000ff";  
+        context.fillText("Canvas", x, y); 
+/*         context.strokeStyle = "blue";  
+        context.strokeText("Canvas", x, y); */
+
+    </script>
+</body>
+</html>

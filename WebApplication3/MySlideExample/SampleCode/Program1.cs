@@ -27,9 +27,15 @@ namespace MySlideExample.SamleCode
             presentationPart.Presentation = new Presentation();
 
             CreatePresentationParts(presentationPart);
+            AddTableTo(presentationPart);
 
             //Close the presentation handle
             presentationDoc.Close();
+        }
+
+        private static void AddTableTo(PresentationPart presentationPart)
+        {
+            throw new NotImplementedException();
         }
 
         private static void CreatePresentationParts(PresentationPart presentationPart)
@@ -47,6 +53,11 @@ namespace MySlideExample.SamleCode
             SlideMasterPart slideMasterPart1;
             ThemePart themePart1;
 
+            //presentationPart --> slidePart1 -->  slideLayoutPart1 --> slideMasterPart1 --> themePart1 --> 
+            //                                                               rid1                rid2          
+
+            // presentationPart --> SlideIdList --> new SlideId()  --> 
+            //                                         rId2
 
             slidePart1 = CreateSlidePart(presentationPart);
             slideLayoutPart1 = CreateSlideLayoutPart(slidePart1);

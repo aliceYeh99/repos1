@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SVGExample", "SVGExample\SV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunburstChartExample", "SunburstChartExample\SunburstChartExample.csproj", "{9FD97767-DCC7-4A97-BC55-986BE9A85938}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqSVGExample", "LinqSVGExample\LinqSVGExample.csproj", "{04B74531-E8A4-4CCA-B0C5-210A47858D57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqSVGExample", "LinqSVGExample\LinqSVGExample.csproj", "{04B74531-E8A4-4CCA-B0C5-210A47858D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySlideExample", "MySlideExample\MySlideExample.csproj", "{325DA507-94F9-4D70-A1E7-922A5BA7AD6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySlideExample", "MySlideExample\MySlideExample.csproj", "{325DA507-94F9-4D70-A1E7-922A5BA7AD6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

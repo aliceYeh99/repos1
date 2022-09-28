@@ -22,17 +22,52 @@ namespace MySlideExample
 {
     public class Program
     {
+        public static void Main1(string[] args)
+        {
+            //CreateHostBuilder(args).Build().Run();
+            //using Stream pngStream = GeneralTools.ReadSvgAsPng(svgPath);
+            //AddImagePart(slidePart, ImagePartType.Png, pngRelId, pngStream);
+            Stream stream1 = GetStream("EmptySlide.pptx");
+            MemoryStream memoryStream = new MemoryStream();
+            int size1 = memoryStream.ToArray().Length;
+            stream1.CopyTo(memoryStream);
+            int size2 = memoryStream.ToArray().Length;
+            byte[] byteData;
+            using (var stream = memoryStream)
+            using (var packageDocument = PresentationDocument.Open(memoryStream, true)) //stream.Path // pptx 寫到記憶體
+            {
+                //C:\Users\AliceYeh\AppData\Local\Temp
+                // 在這裡 AddPresentationPart 會出錯
+                //var presentationPart = presentationDoc.AddPresentationPart();
+                //presentationPart.Presentation = new Presentation();
+                AddImage(packageDocument, "f:/tmp/pie.jpg");
+
+                byteData = stream.ToArray();
+            }
+            //CreatePresentation(stream_Path);
+
+            File.WriteAllBytes("aaa.pptx", byteData);
+
+            //AddImage(stream_Path, "f:/tmp/pie.jpg");
+        }
+
         public static void Main(string[] args)
         {
             //CreateHostBuilder(args).Build().Run(); //不知道要幹嘛
             //CreatePowerPoint();
+            // 上面這個建 PPT 有點完整，先不要執行它
 
-            //        AddCommentToPresentation(@"F:\tmp\OpenXML\Myppt1.pptx",
-            //"Katie Jordan", "KJ",
-            //"This is my programmatically added comment.");
+            MySlideExample.SampleCode.Program3.RunTest();
 
-            string filepath = @"F:\tmp\OpenXML\PresentationFromFilename.pptx";
+            AddCommentToPresentation(@"F:\tmp\OpenXML\Myppt1.pptx",
+    "Katie Jordangggg", "KJ",
+    "This is my programmatically added comment.");
+
+            //新增一個 ppt 檔案
+            //string filepath = @"F:\tmp\OpenXML\PresentationFromFilename.pptx";
+            string filepath = @"F:\tmp\OpenXML\新增一個ppt檔案_928_1.pptx";
             Program1.CreatePresentation(filepath);
+
 
 
         }
@@ -173,7 +208,8 @@ namespace MySlideExample
         private static void CreatePowerPoint()
         {
             // ref https://docs.microsoft.com/en-us/office/open-xml/how-to-insert-a-new-slide-into-a-presentation
-            string presentationFile = "C:/Users/AliceYeh/AppData/Local/Temp/myFirstPPT.pptx";
+            //string presentationFile = "C:/Users/AliceYeh/AppData/Local/Temp/myFirstPPT.pptx";
+            string presentationFile = "F:/tmp/OpenXML/myFirstPPT.pptx";
             using (PresentationDocument presentationDocument = PresentationDocument.Open(presentationFile, true))
             {
                 // Insert other code here.
@@ -316,11 +352,16 @@ namespace MySlideExample
         
         }
 
-        public static void Main2(string[] args)
+        //直接寫檔
+        public static void Main3(string[] args)
         {
             //CreateHostBuilder(args).Build().Run();
             //using Stream pngStream = GeneralTools.ReadSvgAsPng(svgPath);
             //AddImagePart(slidePart, ImagePartType.Png, pngRelId, pngStream);
+            Stream stream1 = GetStream("MySlideExample.Content.EmptySlide.pptx");
+            MemoryStream stream2 = new MemoryStream();
+            stream1.CopyTo(stream2);
+
             using (var stream = OpenFile("EmptySlide.pptx"))
             using (var packageDocument = PresentationDocument.CreateFromTemplate(stream_Path)) //stream.Path
             {
@@ -476,7 +517,100 @@ namespace MySlideExample
             }
         }
 
+        // pptx 寫到記憶體
+        public static void AddImage(PresentationDocument presentation1, string image)
+        {
+            using (var presentation = presentation1)
+            {
+                var slidePart = presentation
+                    .PresentationPart
+                    .SlideParts
+                    .First();
+                //var newPart = presentation
+                //    .AddNewPart<SlidePart>(); //--> 不對
+                //presentation.AddNewPart<SlidePart>(newPart); // 不對
 
+                // keywork openxml ppt insert image imagepart size
+
+                ImagePart part = slidePart
+                    .AddImagePart(ImagePartType.Png);
+
+                using (var stream = File.OpenRead(image))
+                {
+                    part.FeedData(stream);
+                }
+
+                var tree = slidePart
+                    .Slide
+                    .Descendants<DocumentFormat.OpenXml.Presentation.ShapeTree>()
+                    .First();
+
+                var picture = new DocumentFormat.OpenXml.Presentation.Picture();
+
+                picture.NonVisualPictureProperties = new DocumentFormat.OpenXml.Presentation.NonVisualPictureProperties();
+                picture.NonVisualPictureProperties.Append(new DocumentFormat.OpenXml.Presentation.NonVisualDrawingProperties
+                {
+                    Name = "My Shape",
+                    Id = (UInt32)tree.ChildElements.Count - 1
+                });
+
+                var nonVisualPictureDrawingProperties = new DocumentFormat.OpenXml.Presentation.NonVisualPictureDrawingProperties();
+                nonVisualPictureDrawingProperties.Append(new DocumentFormat.OpenXml.Drawing.PictureLocks()
+                {
+                    NoChangeAspect = true
+                });
+                picture.NonVisualPictureProperties.Append(nonVisualPictureDrawingProperties);
+                picture.NonVisualPictureProperties.Append(new DocumentFormat.OpenXml.Presentation.ApplicationNonVisualDrawingProperties());
+
+                var blipFill = new DocumentFormat.OpenXml.Presentation.BlipFill();
+                var blip1 = new DocumentFormat.OpenXml.Drawing.Blip()
+                {
+                    Embed = slidePart.GetIdOfPart(part)
+                };
+                var blipExtensionList1 = new DocumentFormat.OpenXml.Drawing.BlipExtensionList();
+                var blipExtension1 = new DocumentFormat.OpenXml.Drawing.BlipExtension()
+                {
+                    Uri = "{28A0092B-C50C-407E-A947-70E740481C1C}"
+                };
+                var useLocalDpi1 = new DocumentFormat.OpenXml.Office2010.Drawing.UseLocalDpi()
+                {
+                    Val = false
+                };
+                useLocalDpi1.AddNamespaceDeclaration("a14", "http://schemas.microsoft.com/office/drawing/2010/main");
+                blipExtension1.Append(useLocalDpi1);
+                blipExtensionList1.Append(blipExtension1);
+                blip1.Append(blipExtensionList1);
+                var stretch = new DocumentFormat.OpenXml.Drawing.Stretch();
+                stretch.Append(new DocumentFormat.OpenXml.Drawing.FillRectangle());
+                blipFill.Append(blip1);
+                blipFill.Append(stretch);
+                picture.Append(blipFill);
+
+                picture.ShapeProperties = new DocumentFormat.OpenXml.Presentation.ShapeProperties();
+                picture.ShapeProperties.Transform2D = new DocumentFormat.OpenXml.Drawing.Transform2D();
+                picture.ShapeProperties.Transform2D.Append(new DocumentFormat.OpenXml.Drawing.Offset
+                {
+                    X = 0,
+                    Y = 0,
+                });
+                picture.ShapeProperties.Transform2D.Append(new DocumentFormat.OpenXml.Drawing.Extents
+                {
+                    Cx = 10000 * 960,
+                    Cy = 10000 * 640,
+                });
+                //960*640
+                //Cx = 1000000,
+                //Cy = 1000000,
+
+                picture.ShapeProperties.Append(new DocumentFormat.OpenXml.Drawing.PresetGeometry
+                {
+                    Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle
+                });
+
+                tree.Append(picture);
+
+            }
+        }
 
 
 
@@ -509,6 +643,8 @@ namespace MySlideExample
             return stream;
         }
         static String stream_Path = "";
+
+
         public static Stream CopiedFile(Stream stream, string extension)
         {
             var Path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"{Guid.NewGuid()}{extension}");
