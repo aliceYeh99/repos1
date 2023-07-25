@@ -1,0 +1,24 @@
+https://ithelp.ithome.com.tw/articles/10161127
+user, email
+
+https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/database-first-development/creating-the-web-application
+student, course
+
+https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/database-first-development/setting-up-database
+
+CREATE TABLE [dbo].[Student] 語法
+
+https://ithelp.ithome.com.tw/articles/10229937
+Customer, order, orderDetail, Product
+
+用 windows 登入的方法 建 xxDB, EX: TestDB3
+
+然後再選 TestDB3 > Security > Users > 右鍵 新增 USER (New User)
+User type : SQL user with login
+
+Long name 按 ... button 選 t1, 
+Defaul Schema 選 [db_owner]
+
+參考 CRUD
+
+F:\上課\2017\c#\MyWebCRUD\MyWeb\Controllers
