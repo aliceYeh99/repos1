@@ -1,0 +1,13 @@
+zSystem.Data.Entity.Core.MetadataException 'Unable to load the specified metadata resource.'
+
+結果是連線字串的問題
+
+"CodeFirstDB2" 才是按照範例打的
+
+"CodeFirstDB"  是複製 dbfirst 產生的連線字串
+
+  <connectionStrings>
+    <add name="CodeFirstDB2" connectionString="Data Source=DESKTOP-M7089EK\SQLEXPRESS;Initial Catalog=TestDB3;user id=;Password=; Connect Timeout=30;Encrypt=False;TrustServerCertificate=True; ApplicationIntent=ReadWrite;MultiSubnetFailover=False" providerName="System.Data.SqlClient" />
+    <add name="CodeFirstDB" connectionString="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-M7089EK\SQLEXPRESS;initial catalog=TestDB3;user id=;Password=;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    <add name="TestDB3Entities" connectionString="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-M7089EK\SQLEXPRESS;initial catalog=TestDB3;user id=;Password=;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
