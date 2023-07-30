@@ -1,0 +1,32 @@
+System.Data.Entity.ModelConfiguration.ModelValidationException: 'One or more validation errors were detected during model generation:
+
+PMSToolGroup_Owner_Source: : Multiplicity is not valid in Role 'PMSToolGroup_Owner_Source' in relationship 'PMSToolGroup_Owner'. Because the Dependent Role refers to the key properties, the upper bound of the multiplicity of the Dependent Role must be '1'.
+
+
+
+Unhandled Exception: System.Data.Entity.ModelConfiguration.ModelValidationException: One or more validation errors were detected during model generation:
+
+PMSToolGroup_Owner_Source: : Multiplicity is not valid in Role 'PMSToolGroup_Owner_Source' in relationship 'PMSToolGroup_Owner'. Because the Dependent Role refers to the key properties, the upper bound of the multiplicity of the Dependent Role must be '1'.
+
+
+
+---------------
+
+System.Data.Entity.ModelConfiguration.ModelValidationException: 'One or more validation errors were detected during model generation:
+
+EFTestOneToMany.DAL.PMSToolGroup: : EntityType 'PMSToolGroup' has no key defined. Define the key for this EntityType.
+PMSToolGroups: EntityType: EntitySet 'PMSToolGroups' is based on type 'PMSToolGroup' that has no keys defined.
+'
+
+
+---------------------------------------------
+
+System.Data.Entity.Core.EntityCommandExecutionException: 'An error occurred while executing the command definition. See the inner exception for details.'
+
+
+SqlException: Invalid object name 'dbo.PMSToolGroupOwners'.
+
+fix 要加 Include :
+--> Owner = context.Owners.Include("PMSToolGroups").FirstOrDefault();
+
+SqlException: Invalid object name 'dbo.PMSToolGroupOwners'.

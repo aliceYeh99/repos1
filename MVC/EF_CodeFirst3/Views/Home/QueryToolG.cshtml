@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EF_CodeFirst3.Models.PMSToolGroup>
+
+@{
+    ViewBag.Title = "QueryTooG";
+}
+
+<h2>Index2</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerObj.DESC)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerObj.DESC)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ToolGroup }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ToolGroup }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ToolGroup })
+        </td>
+    </tr>
+}
+
+</table>
