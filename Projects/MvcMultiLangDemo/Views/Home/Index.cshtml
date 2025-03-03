@@ -1,0 +1,17 @@
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer< MvcMultiLangDemo.Controllers.HomeController> Localizer
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>@Localizer["HelloMessage"]</h1>
+
+<!-- 語系切換連結 -->
+<a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="zh-TW">切換到中文</a> |
+<a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en">Switch to English</a>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
