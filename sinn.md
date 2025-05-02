@@ -1,88 +1,135 @@
+當然可以！我已幫你**移除所有空白的中文名稱**，只保留有中英文配對的項目。以下是整理後、每筆用兩段 \`\`\` 分隔的內容：
 
-以下是你提供的每一行，我已幫你都加上了三個反引號 \`\`\` 包起來，每個項目獨立一塊，方便閱讀和後續使用：
-
-```
-Sinn. 'Pirate's Lost In Rainbow'海盜的迷失在彩虹裡
-```
+---
 
 ```
-Sinn. 'HCY's Fire Raindrops'HCY的火雨滴
+Sinn. 'Pirate's Lost In Rainbow'
 ```
 
 ```
-Sinn. 'SRG's Dark Beauty'
+海盜的迷失在彩虹裡
 ```
 
 ```
-Sinn. 'WSL's Fervent'WSL的熱情
+Sinn. 'HCY's Fire Raindrops'
 ```
 
 ```
-Sinn. 'WSL's Might' ?WSL的威武
+HCY的火雨滴
 ```
 
 ```
-Sinn. 'An's Nyx'安的夜之女神
+Sinn. 'WSL's Fervent'
 ```
 
 ```
-Sinn. 'Isa's Tropical Nectar'伊莎的熱帶花蜜
+WSL的熱情
 ```
 
 ```
-Sinn. 'Gabriel's Horn'
+Sinn. 'WSL's Might'
 ```
 
 ```
-Sinn. 'Isa's Flamboyant'伊莎的龍飛鳳舞
+WSL的威武
 ```
 
 ```
-Sinn. 'Fu's Mermaid'芙的美人魚
+Sinn. 'An's Nyx'
 ```
 
 ```
-Sinn. 'HCY's Lady Red'HCY的淑女紅
+安的夜之女神
 ```
 
 ```
-Sinn. 'Connect the Dots'
+Sinn. 'Isa's Tropical Nectar'
 ```
 
 ```
-Sinn. 'KJ's MTCARA'
+伊莎的熱帶花蜜
 ```
 
 ```
-Sinn. 'HCY's Sunlight' HCY的日光
+Sinn. 'Isa's Flamboyant'
 ```
 
 ```
-Sinn. 'Pirate's Double Happiness'
+伊莎的龍飛鳳舞
 ```
 
 ```
-Sinn. 'Nora's True Love' 真愛
+Sinn. 'Fu's Mermaid'
 ```
 
 ```
-Sinn. 'Pirate's Lost In Rainbow'海盜的迷失在彩虹裡
+芙的美人魚
 ```
 
 ```
-Sinn. 'An's Sparrow Pink'安的麻雀粉
+Sinn. 'HCY's Lady Red'
 ```
 
 ```
-Sinn. 'Pirate's Daniel'海盜的丹尼爾
+HCY的淑女紅
 ```
 
 ```
-Sinn. 'XY's White Mooning'XY的白月光
+Sinn. 'HCY's Sunlight'
 ```
 
 ```
-Sinn. 'HCY's Peach Fragrance 蜜桃香氛
+HCY的日光
 ```
 
-如果你希望我幫你把結尾那一行缺失的引號也補上（看起來少了一個單引號），我也可以幫你修一下。是否需要？
+```
+Sinn. 'Nora's True Love'
+```
+
+```
+真愛
+```
+
+```
+Sinn. 'Pirate's Lost In Rainbow'
+```
+
+```
+海盜的迷失在彩虹裡
+```
+
+```
+Sinn. 'An's Sparrow Pink'
+```
+
+```
+安的麻雀粉
+```
+
+```
+Sinn. 'Pirate's Daniel'
+```
+
+```
+海盜的丹尼爾
+```
+
+```
+Sinn. 'XY's White Mooning'
+```
+
+```
+XY的白月光
+```
+
+```
+Sinn. 'HCY's Peach Fragrance'
+```
+
+```
+蜜桃香氛
+```
+
+---
+
+如果你希望我幫你匯出成 `.txt` 或 `.md` 文件給你下載上傳，請告訴我，我可以立刻幫你產生。你還有其他花名也要處理嗎？
